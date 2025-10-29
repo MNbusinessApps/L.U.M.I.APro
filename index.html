@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.U.M.I.A Pro - Liability & Underwriting Management Insurance Assistant Professional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <!-- Shield design -->
+                        <path d="M20 3L8 8V16L20 22L32 16V8L20 3Z" stroke="#228B22" stroke-width="2" fill="none"/>
+                        <!-- Computer man silhouette -->
+                        <circle cx="20" cy="18" r="8" fill="#228B22" opacity="0.8"/>
+                        <rect x="15" y="26" width="10" height="6" fill="#228B22" opacity="0.6"/>
+                        <rect x="12" y="32" width="16" height="3" fill="#228B22" opacity="0.4"/>
+                        <!-- Circuit lines -->
+                        <path d="M20 10V14M20 22V26M16 18H24" stroke="#228B22" stroke-width="1" opacity="0.5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>L.U.M.I.A Pro</h1>
+                    <span class="tagline">Liability & Underwriting Management Insurance Assistant Professional</span>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#" class="nav-link active" onclick="navigateTo('welcome')">Welcome</a>
+                <a href="#" class="nav-link" onclick="navigateTo('agent-assistant')">Agent Assistant</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Screen 1: Welcome Page -->
+        <section class="page active" id="welcome">
+            <div class="container">
+                <div class="welcome-content">
+                    <h2>Welcome to L.U.M.I.A Pro</h2>
+                    <p class="welcome-subtitle">Professional Insurance Assessment System</p>
+                    
+                    <div class="welcome-options">
+                        <div class="option-card" onclick="navigateTo('new-client-info')">
+                            <div class="option-icon">👤</div>
+                            <h3>New Client</h3>
+                            <p>Start liability assessment for a new prospect</p>
+                            <div class="option-arrow">→</div>
+                        </div>
+                        
+                        <div class="option-card" onclick="navigateTo('existing-client-info')">
+                            <div class="option-icon">🔄</div>
+                            <h3>Existing Client</h3>
+                            <p>Update liability assessment for current client</p>
+                            <div class="option-arrow">→</div>
+                        </div>
+                        
+                        <div class="option-card agent-only" onclick="navigateTo('agent-assistant')">
+                            <div class="option-icon">🛡️</div>
+                            <h3>Agent Assistant</h3>
+                            <p>Scripts, client management, and training materials</p>
+                            <div class="option-badge">AGENT ONLY</div>
+                            <div class="option-arrow">→</div>
+                        </div>
+                    </div>
+
+                    <div class="cta-section">
+                        <h3>Professional Insurance Assessment</h3>
+                        <p>Systematic approach for comprehensive insurance evaluation and client education</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 2: New Client Information -->
+        <section class="page" id="new-client-info">
+            <div class="container">
+                <div class="page-header">
+                    <h2>New Client Information</h2>
+                    <div class="breadcrumb">
+                        <a href="#" onclick="navigateTo('welcome')">Welcome</a> → <span class="current">New Client</span>
+                    </div>
+                </div>
+                
+                <form class="client-form" id="newClientForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="new-client-name">Full Name *</label>
+                            <input type="text" id="new-client-name" required placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-client-address">Address</label>
+                            <input type="text" id="new-client-address" placeholder="123 Main St, City, State 12345">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-client-phone">Phone Number</label>
+                            <input type="tel" id="new-client-phone" placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-client-email">Email Address</label>
+                            <input type="email" id="new-client-email" placeholder="john@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="new-client-occupation">Occupation</label>
+                            <input type="text" id="new-client-occupation" placeholder="Software Engineer">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('welcome')">← Back to Welcome</button>
+                        <button type="button" class="btn btn-primary" onclick="saveNewClient()">Continue to Assessment →</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Screen 3: Existing Client Information -->
+        <section class="page" id="existing-client-info">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Existing Client Information</h2>
+                    <div class="breadcrumb">
+                        <a href="#" onclick="navigateTo('welcome')">Welcome</a> → <span class="current">Existing Client</span>
+                    </div>
+                </div>
+                
+                <form class="client-form" id="existingClientForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="existing-client-name">Client Name</label>
+                            <select id="existing-client-name" onchange="populateExistingClient()">
+                                <option value="">Select existing client or enter new</option>
+                                <!-- Options populated from saved clients -->
+                            </select>
+                            <small>Select from saved clients or enter a new client</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-client-address">Address</label>
+                            <input type="text" id="existing-client-address" placeholder="123 Main St, City, State 12345">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-client-phone">Phone Number</label>
+                            <input type="tel" id="existing-client-phone" placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-client-email">Email Address</label>
+                            <input type="email" id="existing-client-email" placeholder="john@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-client-occupation">Occupation</label>
+                            <input type="text" id="existing-client-occupation" placeholder="Software Engineer">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('welcome')">← Back to Welcome</button>
+                        <button type="button" class="btn btn-primary" onclick="saveExistingClient()">Continue to Assessment →</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Screen 4: New Client Liability Assessment -->
+        <section class="page" id="new-client-assessment">
+            <div class="container">
+                <div class="page-header">
+                    <h2>New Client Liability Assessment</h2>
+                    <div class="breadcrumb">
+                        <a href="#" onclick="navigateTo('welcome')">Welcome</a> → <a href="#" onclick="navigateTo('new-client-info')">New Client</a> → <span class="current">Assessment</span>
+                    </div>
+                </div>
+                
+                <div class="client-info-display" id="assessmentClientInfo">
+                    <h3>Client: <span id="assessmentClientName">Loading...</span></h3>
+                </div>
+                
+                <form class="assessment-form" id="newAssessmentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="home-value">Home Value ($)</label>
+                            <input type="number" id="home-value" placeholder="350,000" step="1000">
+                            <small>Current market value of your home</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="auto-value">Auto Value ($)</label>
+                            <input type="number" id="auto-value" placeholder="35,000" step="1000">
+                            <small>Current value of your vehicle</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="annual-income">Annual Income ($)</label>
+                            <input type="number" id="annual-income" placeholder="75,000" step="1000">
+                            <small>Your gross annual income</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="income-years">Income Protection Period</label>
+                            <select id="income-years">
+                                <option value="2" selected>2 years</option>
+                            </select>
+                            <small>Standard 2-year protection period</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="life-insurance">Current Life Insurance ($)</label>
+                            <input type="number" id="life-insurance" placeholder="250,000" step="1000">
+                            <small>Existing life insurance coverage</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investments">Investment Amount ($)</label>
+                            <input type="number" id="investments" placeholder="100,000" step="1000">
+                            <small>401k, IRA, stocks, bonds, etc.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('new-client-info')">← Back to Client Info</button>
+                        <button type="button" class="btn btn-primary" onclick="calculateAndShowRecommendations('new')">See Recommendations →</button>
+                    </div>
+                </form>
+
+                <div class="calculation-summary" id="calculationSummary" style="display: none;">
+                    <h3>Liability Exposure Calculation</h3>
+                    <div class="exposure-breakdown">
+                        <div class="exposure-item">
+                            <label>Home Value:</label>
+                            <span id="calc-home">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Auto Value:</label>
+                            <span id="calc-auto">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Income Protection (2x):</label>
+                            <span id="calc-income">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Life Insurance Protection:</label>
+                            <span id="calc-life">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Investment Protection:</label>
+                            <span id="calc-investments">$0</span>
+                        </div>
+                        <div class="exposure-item total">
+                            <label><strong>Total Liability Exposure:</strong></label>
+                            <span id="calc-total"><strong>$0</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 5: Existing Client Liability Assessment -->
+        <section class="page" id="existing-client-assessment">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Existing Client Liability Assessment</h2>
+                    <div class="breadcrumb">
+                        <a href="#" onclick="navigateTo('welcome')">Welcome</a> → <a href="#" onclick="navigateTo('existing-client-info')">Existing Client</a> → <span class="current">Assessment</span>
+                    </div>
+                </div>
+                
+                <div class="client-info-display" id="existingAssessmentClientInfo">
+                    <h3>Client: <span id="existingAssessmentClientName">Loading...</span></h3>
+                </div>
+                
+                <form class="assessment-form" id="existingAssessmentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="existing-home-value">Home Value ($)</label>
+                            <input type="number" id="existing-home-value" placeholder="350,000" step="1000">
+                            <small>Current market value of your home</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-auto-value">Auto Value ($)</label>
+                            <input type="number" id="existing-auto-value" placeholder="35,000" step="1000">
+                            <small>Current value of your vehicle</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-annual-income">Annual Income ($)</label>
+                            <input type="number" id="existing-annual-income" placeholder="75,000" step="1000">
+                            <small>Your gross annual income</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-income-years">Income Protection Period</label>
+                            <select id="existing-income-years">
+                                <option value="2" selected>2 years</option>
+                            </select>
+                            <small>Standard 2-year protection period</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-life-insurance">Current Life Insurance ($)</label>
+                            <input type="number" id="existing-life-insurance" placeholder="250,000" step="1000">
+                            <small>Existing life insurance coverage</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="existing-investments">Investment Amount ($)</label>
+                            <input type="number" id="existing-investments" placeholder="100,000" step="1000">
+                            <small>401k, IRA, stocks, bonds, etc.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('existing-client-info')">← Back to Client Info</button>
+                        <button type="button" class="btn btn-primary" onclick="calculateAndShowRecommendations('existing')">See Recommendations →</button>
+                    </div>
+                </form>
+
+                <div class="calculation-summary" id="existingCalculationSummary" style="display: none;">
+                    <h3>Liability Exposure Calculation</h3>
+                    <div class="exposure-breakdown">
+                        <div class="exposure-item">
+                            <label>Home Value:</label>
+                            <span id="existing-calc-home">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Auto Value:</label>
+                            <span id="existing-calc-auto">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Income Protection (2x):</label>
+                            <span id="existing-calc-income">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Life Insurance Protection:</label>
+                            <span id="existing-calc-life">$0</span>
+                        </div>
+                        <div class="exposure-item">
+                            <label>Investment Protection:</label>
+                            <span id="existing-calc-investments">$0</span>
+                        </div>
+                        <div class="exposure-item total">
+                            <label><strong>Total Liability Exposure:</strong></label>
+                            <span id="existing-calc-total"><strong>$0</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 6: New Client Recommendations -->
+        <section class="page" id="new-client-recommendations">
+            <div class="container">
+                <div class="page-header">
+                    <h2>New Client Coverage Recommendations</h2>
+                    <div class="breadcrumb">
+                        <a href="#" onclick="navigateTo('welcome')">Welcome</a> → <a href="#" onclick="navigateTo('new-client-info')">New Client</a> → <a href="#" onclick="navigateTo('new-client-assessment')">Assessment</a> → <span class="current">Recommendations</span>
+                    </div>
+                </div>
+                
+                <div class="recommendations-content">
+                    <div class="client-summary" id="recommendationsClientInfo">
+                        <h3>Client: <span id="recommendationsClientName">Loading...</span></h3>
+                        <p>Liability Exposure: <span id="recommendationsExposure">$0</span></p>
+                    </div>
+                    
+                    <div class="recommendation-card" id="newRecommendationCard">
+                        <!-- Recommendations populated by JavaScript -->
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('new-client-assessment')">← Back to Assessment</button>
+                        <button type="button" class="btn btn-primary" onclick="generateSummary('new')">Continue to Summary →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 7: Existing Client Recommendations -->
+        <section class="page" id="existing-client-recommendations">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Existing Client Coverage Recommendations</h2>
+                    <div class="breadcrumb">
+                        <a href="#" onclick="navigateTo('welcome')">Welcome</a> → <a href="#" onclick="navigateTo('existing-client-info')">Existing Client</a> → <a href="#" onclick="navigateTo('existing-client-assessment')">Assessment</a> → <span class="current">Recommendations</span>
+                    </div>
+                </div>
+                
+                <div class="recommendations-content">
+                    <div class="client-summary" id="existingRecommendationsClientInfo">
+                        <h3>Client: <span id="existingRecommendationsClientName">Loading...</span></h3>
+                        <p>Liability Exposure: <span id="existingRecommendationsExposure">$0</span></p>
+                    </div>
+                    
+                    <div class="recommendation-card" id="existingRecommendationCard">
+                        <!-- Recommendations populated by JavaScript -->
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('existing-client-assessment')">← Back to Assessment</button>
+                        <button type="button" class="btn btn-primary" onclick="generateSummary('existing')">Continue to Summary →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 8: Summary Page -->
+        <section class="page" id="summary-page">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Client Coverage Summary</h2>
+                    <div class="breadcrumb">
+                        <span class="current">Summary</span>
+                    </div>
+                </div>
+                
+                <div class="summary-content" id="summaryContent">
+                    <!-- Summary content populated by JavaScript -->
+                </div>
+                
+                <div class="summary-actions">
+                    <button type="button" class="btn btn-secondary" onclick="navigateTo('welcome')">← Back to Welcome</button>
+                    <button type="button" class="btn btn-primary" onclick="printSummary()">🖨️ Print Summary</button>
+                    <button type="button" class="btn btn-secondary" onclick="saveClientRecord()">💾 Save Client</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 9: Agent Assistant -->
+        <section class="page" id="agent-assistant">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Agent Assistant</h2>
+                    <div class="breadcrumb">
+                        <span class="current">Agent Tools</span>
+                    </div>
+                </div>
+                
+                <div class="agent-assistant-content">
+                    <!-- Client Management -->
+                    <div class="agent-section">
+                        <h3>Client Management</h3>
+                        <div class="clients-folders">
+                            <div class="folder-section">
+                                <h4>New Clients</h4>
+                                <div id="newClientsFolder">
+                                    <div class="no-clients">No new clients saved yet.</div>
+                                </div>
+                            </div>
+                            <div class="folder-section">
+                                <h4>Existing Clients</h4>
+                                <div id="existingClientsFolder">
+                                    <div class="no-clients">No existing clients saved yet.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scripts and Training -->
+                    <div class="agent-section">
+                        <h3>Insurance Scripts & Training</h3>
+                        <div class="scripts-content">
+                            
+                            <div class="script-subsection">
+                                <h4>📞 Opening Appointment Script</h4>
+                                <div class="script-content">
+                                    <p><strong>"Good [morning/afternoon] [Client Name]! Thank you so much for taking the time to meet with me today. I'm here from your agency to review your insurance needs and make sure you and your family are properly protected.</strong></p>
+                                    <p>I know you're busy, so I want to make this as valuable and efficient as possible. We'll be covering your current coverage, identifying any gaps, and discussing how your agency can help protect everything you've worked so hard to build.</p>
+                                    <p>Is now still a good time for you?"</p>
+                                </div>
+                            </div>
+
+                            <div class="script-subsection">
+                                <h4>🏠 Family Protection & Long-Term Goals Transition</h4>
+                                <div class="script-content">
+                                    <p><strong>"Before we dive into the numbers, I'd love to understand your situation better. When we think about insurance protection, we're really talking about two main things:</strong></p>
+                                    <p>First, <em>protecting your family's lifestyle</em> - making sure that if something were to happen to you, they could maintain their current standard of living.</p>
+                                    <p>Second, <em>protecting your paycheck</em> - ensuring that your income stream is secure so you can continue building toward your long-term goals like retirement, your children's education, or that dream home.</p>
+                                    <p><strong>"Tell me, what are your main concerns when it comes to protecting your family's future?"</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="script-subsection">
+                                <h4>⚖️ How Liability Works - The Lawyer Example</h4>
+                                <div class="script-content">
+                                    <p><strong>"Let me give you a real example of how liability protection works. Imagine you're driving and you accidentally hit a successful lawyer who makes $300,000 a year.</strong></p>
+                                    <div class="example-scenario">
+                                        <h5>Potential Lawsuit Breakdown:</h5>
+                                        <ul>
+                                            <li><strong>Medical Bills:</strong> $200,000</li>
+                                            <li><strong>Lost Wages:</strong> $600,000 (2 years at $300k/year)</li>
+                                            <li><strong>Pain & Suffering:</strong> $400,000</li>
+                                            <li><strong>Legal Fees:</strong> $100,000</li>
+                                            <li><strong>Total Potential Lawsuit:</strong> $1,300,000</li>
+                                        </ul>
+                                    </div>
+                                    <p><strong>"This is exactly why adequate liability protection is so crucial. Your current auto policy limits might only be $250,000, which means you're personally responsible for over $1 million. That's why we need to make sure your coverage matches your actual exposure."</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="script-subsection">
+                                <h4>🎯 Closing Scripts</h4>
+                                <div class="closing-scripts">
+                                    <div class="closing-option">
+                                        <h5>Assumption Close</h5>
+                                        <p>"Based on what we've discussed today and your total liability exposure of $[amount], I'm confident that the [policy limits] policy is the right fit for your situation. When would you like me to prepare the paperwork to get you protected?"</p>
+                                    </div>
+                                    <div class="closing-option">
+                                        <h5>Summary Close</h5>
+                                        <p>"Let me recap what we've covered today: Your total exposure is $[amount], and we're recommending $[policy] coverage to fully protect your assets. This gives you peace of mind knowing your family and investments are secure. Shall we move forward with this protection?"</p>
+                                    </div>
+                                    <div class="closing-option">
+                                        <h5>Choice Close</h5>
+                                        <p>"Would you prefer to start with the $[policy] today, or would you like to review this with your spouse first and I'll follow up tomorrow?"</p>
+                                    </div>
+                                    <div class="closing-option">
+                                        <h5>Urgency Close</h5>
+                                        <p>"I don't want to pressure you, but I should mention that insurance rates are increasing, and your current coverage leaves you exposed to significant risk. Can we go ahead and get you properly protected today?"</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="script-subsection">
+                                <h4>📋 Follow-Up Scripts</h4>
+                                <div class="followup-content">
+                                    <div class="followup-option">
+                                        <h5>Same-Day Follow-Up</h5>
+                                        <p>"Hi [Client Name], this is [Your Name] from your agency. I wanted to follow up on our conversation today. Do you have any questions about the coverage recommendations we discussed?"</p>
+                                    </div>
+                                    <div class="followup-option">
+                                        <h5>Quote Delivery</h5>
+                                        <p>"Hi [Client Name], I've prepared your personalized quote from your agency. The numbers clearly show why [policy] coverage is essential for your situation. When would be a good time to review these details?"</p>
+                                    </div>
+                                    <div class="followup-option">
+                                        <h5>Closing Call</h5>
+                                        <p>"Hi [Client Name], I've reviewed all the details with you, and we're ready to get you protected. Can we schedule the policy to start [date]?"</p>
+                                    </div>
+                                    <div class="followup-option">
+                                        <h5>Referral Script</h5>
+                                        <p>"I'm so glad we got you properly protected! I work with many families in your situation. Who else do you know who might benefit from a complimentary insurance review like we just did for you?"</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Calendar Section -->
+                    <div class="agent-section">
+                        <h3>📅 Appointment Calendar</h3>
+                        <div class="calendar-placeholder">
+                            <div class="calendar-widget">
+                                <div class="calendar-header">
+                                    <button onclick="previousMonth()" class="calendar-nav">‹</button>
+                                    <h4 id="currentMonth">October 2025</h4>
+                                    <button onclick="nextMonth()" class="calendar-nav">›</button>
+                                </div>
+                                <div class="calendar-grid">
+                                    <div class="calendar-day">Sun</div>
+                                    <div class="calendar-day">Mon</div>
+                                    <div class="calendar-day">Tue</div>
+                                    <div class="calendar-day">Wed</div>
+                                    <div class="calendar-day">Thu</div>
+                                    <div class="calendar-day">Fri</div>
+                                    <div class="calendar-day">Sat</div>
+                                </div>
+                                <div class="calendar-dates" id="calendarDates">
+                                    <!-- Calendar dates populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="calendar-actions">
+                                <button class="btn btn-primary" onclick="scheduleAppointment()">Schedule Appointment</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Print Options -->
+                    <div class="agent-section">
+                        <h3>🖨️ Print Options</h3>
+                        <div class="print-options">
+                            <button class="btn btn-outline" onclick="printRecommendations()">Print Recommendations</button>
+                            <button class="btn btn-outline" onclick="printScripts()">Print Scripts</button>
+                            <button class="btn btn-outline" onclick="printClientInfo()">Print Client Info</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="navigateTo('welcome')">← Back to Welcome</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 L.U.M.I.A Pro - Liability & Underwriting Management Insurance Assistant Professional</p>
+            <p>Professional Insurance Assessment System</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
